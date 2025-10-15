@@ -1,0 +1,35 @@
+/* Estilos manuales para sobrescribir los estilos de @tailwindcss/typography donde sea necesario */
+
+/* --- Estilos de Tabla --- */
+
+/* Contenedor de la tabla para permitir scroll horizontal si es muy ancha */
+.prose table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+/* Encabezado de la tabla */
+.prose thead {
+    background-color: hsl(var(--muted)); /* Color de fondo para el encabezado */
+}
+
+.prose thead th {
+    padding: 0.75rem 1rem; /* Relleno */
+    text-align: left;
+    font-weight: 600; /* Texto en negrita */
+    border: 1px solid hsl(var(--border)); /* Bordes en todos los lados */
+}
+
+/* Celdas del cuerpo de la tabla */
+.prose tbody td {
+    padding: 0.75rem 1rem;
+    border: 1px solid hsl(var(--border));
+    vertical-align: top;
+}
+
+/* Filas con colores alternos (efecto cebra) */
+.prose tbody tr:nth-child(even) {
+    background-color: hsl(var(--muted) / 0.5);
+}
