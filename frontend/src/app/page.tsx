@@ -10,7 +10,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold mt-4">DevCompass</h1>
         <p className="text-lg mt-2">Your developer portal is starting up.</p>
         <div className="mt-8">
-          <Button variant="custom" size="lg" asChild>
+          <Button variant="custom" size="lg">
             <Link href="/catalog">
               Go to Catalog
             </Link>

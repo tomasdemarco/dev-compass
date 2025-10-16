@@ -191,3 +191,25 @@
         @apply bg-background text-foreground;
     }
 }
+
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node polygon {
+    /* La magia sucede aquí */
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.25));
+
+    /* Opcional: puedes agregar otras propiedades CSS */
+    stroke-width: 2px; /* Hacer el borde un poco más grueso */
+}
+
+/* Para los puntos de commit (círculos) */
+.mermaid .gitGraph-diagram .commit circle {
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+}
+
+/* Para las etiquetas de las ramas y los tags (rectángulos) */
+.mermaid .gitGraph-diagram .label rect {
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.25));
+    /* Opcional: un borde más suave para que combine con la sombra */
+    rx: 3px;
+}

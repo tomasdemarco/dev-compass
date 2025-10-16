@@ -1,0 +1,190 @@
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: presentation
+  description: "Recibe autorizaciones desde una MQ y las presenta"
+  tags:
+    - ecs
+    - worker
+    - dotnet
+spec:
+  type: service
+  lifecycle: deprecated
+  owner: "desarrollo"
+  dependsOn:
+    - resource:entidad-database
+    - resource:mq-presentation-incoming
+  dependencyOf:
+    - resource:mq-visa-record-gen-incoming
+    - resource:mq-mastercard-record-gen-incoming
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: visa-record-gen
+  description: "Prepara los datos para CTF saliente"
+  tags:
+    - ecs
+    - worker
+    - dotnet
+spec:
+  type: service
+  lifecycle: deprecated
+  owner: "desarrollo"
+  dependsOn:
+    - resource:entidad-database
+    - resource:mq-visa-record-gen-incoming
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: mastercard-record-gen
+  description: "Prepara los datos para IPM saliente"
+  tags:
+    - ecs
+    - worker
+    - dotnet
+spec:
+  type: service
+  lifecycle: deprecated
+  owner: "desarrollo"
+  dependsOn:
+    - resource:entidad-database
+    - resource:mq-mastercard-record-gen-incoming
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: visa-file-gen
+  description: "Prepara los datos para CTF saliente"
+  tags:
+    - ecs
+    - batch
+    - dotnet
+spec:
+  type: service
+  lifecycle: deprecated
+  owner: "desarrollo"
+  dependsOn:
+    - resource:entidad-database
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: mastercard-file-gen
+  description: "Prepara los datos para IPM saliente"
+  tags:
+    - ecs
+    - batch
+    - dotnet
+spec:
+  type: service
+  lifecycle: deprecated
+  owner: "desarrollo"
+  dependsOn:
+    - resource:entidad-database
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: cybersource
+  description: "Proceso batch que parsea archivo TC33A de Cybersource"
+  tags:
+    - ecs
+    - batch
+    - dotnet
+spec:
+  type: service
+  lifecycle: deprecated
+  owner: "desarrollo"
+  dependsOn:
+    - resource:entidad-database
+    - resource:cybersource-bucket
+  dependencyOf:
+    - resource:mq-presentation-incoming
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: api-comercios
+  description: "Gestion de comercios"
+  tags:
+    - iis
+    - api
+    - dotnet
+spec:
+  type: service
+  lifecycle: deprecated
+  owner: "desarrollo"
+  relations:
+    - type: providesApi
+      target:
+        kind: Component
+        name: master-match
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: api-subcomercios
+  description: "Gestion de subcomercios"
+  tags:
+    - iis
+    - api
+    - dotnet
+spec:
+  type: service
+  lifecycle: deprecated
+  owner: "desarrollo"
+  relations:
+    - type: providesApi
+      target:
+        kind: Component
+        name: master-match
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: ipm-entrante
+  namespace: adq
+  description: "Proceso batch que parsea archivo IPM de Mastercard"
+  tags:
+    - ecs
+    - batch
+    - dotnet
+spec:
+  type: service
+  lifecycle: deprecated
+  owner: "desarrollo"
+  dependsOn:
+    - resource:entidad-database
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: ctf-entrante
+  description: "Proceso batch que parsea archivo CTF de Visa"
+  tags:
+    - ecs
+    - batch
+    - dotnet
+spec:
+  type: service
+  lifecycle: deprecated
+  owner: "desarrollo"
+  dependsOn:
+    - resource:entidad-database
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: switch-sender
+  description: "Recibe transacciones desde una MQ y las envia transacciones por los protocolos ISO y API hacia el Switch Transaccional"
+  tags:
+    - ecs
+    - worker
+    - go
+spec:
+  type: service
+  lifecycle: deprecated
+  owner: "desarrollo"

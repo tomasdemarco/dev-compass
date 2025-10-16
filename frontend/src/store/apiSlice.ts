@@ -1,11 +1,25 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Entity } from '@/types/component';
 
+// --- Type Definitions for Environments ---
+export interface DeploymentComponent {
+  componentName: string;
+  version: string;
+  timestamp: string;
+  entidad?: string;
+}
+
+export interface Environment {
+  name: string;
+  description: string;
+  deployments: DeploymentComponent[];
+}
+
 // Define a service using a base URL and expected endpoints.
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8080/api/v1/' }),
-  tagTypes: ['Entity'],
+  tagTypes: ['Entity', 'Environment'],
   endpoints: (builder) => ({
     getEntities: builder.query<Entity[], { search?: string; tag?: string }>({ 
       query: ({ search = '', tag = '' }) => {
@@ -19,6 +33,10 @@ export const apiSlice = createApi({
               { type: 'Entity', id: 'LIST' },
             ]
           : [{ type: 'Entity', id: 'LIST' }],
+    }),
+    getEnvironments: builder.query<Environment[], void>({
+      query: () => 'environments',
+      providesTags: ['Environment'],
     }),
     releaseJob: builder.mutation<void, string>({
       query: (jobId) => ({
@@ -37,4 +55,4 @@ export const apiSlice = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetEntitiesQuery, useReleaseJobMutation, useGetEntityDocsQuery } = apiSlice;
+export const { useGetEntitiesQuery, useGetEnvironmentsQuery, useReleaseJobMutation, useGetEntityDocsQuery } = apiSlice;

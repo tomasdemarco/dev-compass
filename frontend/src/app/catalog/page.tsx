@@ -47,7 +47,6 @@ function ResourceCard({ resource }: { resource: Entity & { kind: 'Resource' } })
         <CardContent>
           <p className="font-normal text-muted-foreground mb-3">{resource.metadata.description}</p>
           <div className="flex flex-wrap gap-2 items-center">
-            <StyledBadge type="kind" text={resource.kind} />
             {(resource.metadata.tags || []).map(tag => (
               <StyledBadge key={tag} type="tag" text={tag} />
             ))}

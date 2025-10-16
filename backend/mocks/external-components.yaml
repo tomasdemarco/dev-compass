@@ -1,0 +1,54 @@
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: opi-switch
+  description: "Switch transaccional"
+  tags:
+    - external
+    - ecs
+    - api
+    - iso
+spec:
+  type: saas
+  lifecycle: production
+  owner: "OPI"
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: master-match
+  description: "Consulta comercios de Mastercard"
+  tags:
+    - external
+    - api
+spec:
+  type: saas
+  lifecycle: production
+  owner: "Mastercard"
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: sentinel-realtime
+  description: "Consulta de fraude real time"
+  tags:
+    - external
+    - api
+spec:
+  type: saas
+  lifecycle: production
+  owner: "Sentinel"
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Component
+metadata:
+  name: sentinel-online
+  description: "Registra datos para detección de fraude"
+  tags:
+    - external
+    - lambda
+spec:
+  type: saas
+  lifecycle: production
+  owner: "Sentinel"

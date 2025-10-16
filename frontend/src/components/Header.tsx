@@ -1,10 +1,17 @@
 'use client'
 import React from "react";
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
     const router = useRouter();
+    const pathname = usePathname();
+
+    const linkClasses = (href: string) => cn(
+        "px-10 py-3 text-sm rounded-md cursor-pointer transition-colors hover:bg-gray/25 text-white hover:text-secondary-gp select-none",
+        { "text-secondary-gp": pathname === href }
+    );
 
     return (
         <div className="flex z-10 bg-header-gp dark:bg-black w-full fixed shadow shadow-white/10 space-x-4 h-20 items-center">
@@ -32,17 +39,18 @@ const Header = () => {
 
             {/* Navigation Links */}
             <div className="flex-none flex items-center justify-center font-bold">
-                <Link
-                    className="px-10 py-3 text-sm rounded-md cursor-pointer transition-colors hover:bg-gray/25 text-white hover:text-secondary-gp select-none"
-                    href="/catalog">
+                <Link className={linkClasses("/catalog")} href="/catalog">
                     Catalog
                 </Link>
-                <Link
-                    className="px-10 py-3 text-sm rounded-md cursor-pointer transition-colors hover:bg-gray/25 text-white hover:text-secondary-gp select-none"
-                    href="/full-diagram">
+                <Link className={linkClasses("/environments")} href="/environments">
+                    Environments
+                </Link>
+                <Link className={linkClasses("/full-diagram")} href="/full-diagram">
                     Full Diagram
                 </Link>
-                {/* Add other links here if needed in the future */}
+                <Link className={linkClasses("/gitflow")} href="/gitflow">
+                    GitFlow
+                </Link>
             </div>
 
             {/* Right empty space */}

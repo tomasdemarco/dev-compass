@@ -1,0 +1,65 @@
+apiVersion: devcompass.io/v1alpha1
+kind: Resource
+metadata:
+  name: entidad-database
+  description: Base de datos de parametria.
+  tags:
+    - oracle
+spec:
+  type: database
+  owner: dba
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Resource
+metadata:
+  name: parametria-database
+  description: Base de datos de parametria.
+  tags:
+    - oracle
+spec:
+  type: database
+  owner: team-data
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Resource
+metadata:
+  name: mq-presentation-incoming
+  description: Cola de presentation.
+  tags:
+    - mq
+spec:
+  type: mq
+  owner: sysops
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Resource
+metadata:
+  name: mq-visa-record-gen-incoming
+  description: Cola de visa record gen.
+  tags:
+    - mq
+spec:
+  type: mq
+  owner: sysops
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Resource
+metadata:
+  name: mq-mastercard-record-gen-incoming
+  description: Cola de master record gen.
+  tags:
+    - mq
+spec:
+  type: mq
+  owner: sysops
+---
+apiVersion: devcompass.io/v1alpha1
+kind: Resource
+metadata:
+  name: cybersource-bucket
+  description: S3 bucket.
+  tags:
+    - s3
+spec:
+  type: s3-folder
+  owner: sysops

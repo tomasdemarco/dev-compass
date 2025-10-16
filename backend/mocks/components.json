@@ -1,0 +1,90 @@
+[
+  {
+    "apiVersion": "devcompass.io/v1alpha1",
+    "kind": "Component",
+    "metadata": {
+      "name": "auth-service",
+      "description": "Central authentication service for all products.",
+      "tags": ["go", "api", "authentication"]
+    },
+    "spec": {
+      "type": "service",
+      "lifecycle": "production",
+      "techdocs": {
+        "dir": "docs"
+      },
+      "ci": {
+        "last_run_status": "SUCCESS",
+        "pipeline_url": "#"
+      },
+      "repository": {
+        "tags": [
+          { "name": "v2.1.0", "timestamp": "2025-10-05T10:00:00Z" },
+          { "name": "v2.0.0", "timestamp": "2025-09-15T14:00:00Z" }
+        ]
+      }
+    }
+  },
+  {
+    "apiVersion": "devcompass.io/v1alpha1",
+    "kind": "Component",
+    "metadata": {
+      "name": "design-system-ui",
+      "description": "Shared React component library.",
+      "tags": ["react", "typescript", "ui-kit"]
+    },
+    "spec": {
+      "type": "library",
+      "lifecycle": "production",
+      "owner": "frontend-platform",
+      "techdocs": {
+        "dir": "docs"
+      },
+      "ci": {
+        "last_run_status": "SUCCESS",
+        "pipeline_url": "#"
+      },
+      "repository": {
+        "tags": [
+          { "name": "v1.12.3", "timestamp": "2025-10-08T18:00:00Z" },
+          { "name": "v1.12.2", "timestamp": "2025-10-02T11:00:00Z" }
+        ]
+      },
+      "relations": [
+        {
+          "type": "dependsOn",
+          "target": {
+            "kind": "Component",
+            "name": "auth-service"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "apiVersion": "devcompass.io/v1alpha1",
+    "kind": "Component",
+    "metadata": {
+      "name": "data-pipeline",
+      "description": "ETL pipeline for analytics.",
+      "tags": ["python", "bigquery", "data"]
+    },
+    "spec": {
+      "type": "service",
+      "lifecycle": "experimental",
+      "owner": "data-eng",
+      "techdocs": {
+        "dir": "docs"
+      },
+      "ci": {
+        "last_run_status": "FAILED",
+        "pipeline_url": "#"
+      },
+      "repository": {
+        "tags": [
+          { "name": "v0.5.0", "timestamp": "2025-09-30T16:00:00Z" }
+        ]
+      }
+    }
+  }
+]
