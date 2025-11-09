@@ -3,13 +3,14 @@
 import { useGetEntitiesQuery } from "@/store/apiSlice";
 import { notFound, useParams } from "next/navigation";
 import { useMemo, useState } from "react";
-import EntityDependencyDiagram from "@/components/catalog/EntityDependencyDiagram"; // Updated import
+import EntityDependencyDiagram from "@/components/catalog/EntityDependencyDiagram";
 import TechDocsViewer from "@/components/catalog/TechDocsViewer";
 import StyledBadge from "@/components/generics/StyledBadge";
 import { CheckCircle2, XCircle, Loader, Tag, AlertTriangle } from 'lucide-react';
 import TagsList from "@/components/catalog/TagsList";
 import CiCdTabContent from "@/components/catalog/CiCdTabContent";
-import EnvironmentTabContent from "@/components/catalog/EnvironmentTabContent";
+import VariablesTabContent from "@/components/catalog/VariablesTabContent";
+import VersionTabContent from "@/components/catalog/VersionTabContent";
 import { cn } from "@/lib/utils";
 import { Entity, isComponent, isResource } from "@/types/component";
 
@@ -150,8 +151,11 @@ export default function EntityDetailPage() {
               <button className={tabClass('ci-cd')} onClick={() => setActiveTab('ci-cd')}>
                 CI/CD
               </button>
-              <button className={tabClass('environment')} onClick={() => setActiveTab('environment')}>
-                Environment
+              <button className={tabClass('variables')} onClick={() => setActiveTab('variables')}>
+                Variables
+              </button>
+              <button className={tabClass('versions')} onClick={() => setActiveTab('versions')}>
+                Versions
               </button>
               <button className={tabClass('docs')} onClick={() => setActiveTab('docs')}>
                 Documentation
@@ -173,8 +177,12 @@ export default function EntityDetailPage() {
               <CiCdTabContent spec={entity.spec} />
             )}
 
-            {activeTab === 'environment' && (
-              <EnvironmentTabContent spec={entity.spec} />
+            {activeTab === 'variables' && (
+              <VariablesTabContent spec={entity.spec} />
+            )}
+
+            {activeTab === 'versions' && (
+              <VersionTabContent componentName={entity.metadata.name} />
             )}
 
             {activeTab === 'docs' && (

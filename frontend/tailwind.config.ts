@@ -64,6 +64,10 @@ const config: Config = {
         "header-gp": "var(--color-header-gp)",
         "primary-gp": "var(--color-primary-gp)",
         "secondary-gp": "var(--color-secondary-gp)",
+        // Node colors
+        "node-header": "var(--color-node-header)",
+        "node-component": "var(--color-node-component)",
+        "node-resource": "var(--color-node-resource)",
       },
       borderRadius: {
         lg: "var(--radius-lg)",

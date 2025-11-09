@@ -127,7 +127,7 @@ const ItemMenu: React.FC<ItemMenuProps> = ({ items, icon, position = 'right' }) 
                                         item.onClick();
                                         setIsOpen(false);
                                     }}
-                                    className="group flex items-center w-full px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary"
+                                    className="group flex items-center w-full px-4 py-2 rounded-md text-sm text-foreground hover:bg-secondary hover:text-primary"
                                     role="menuitem"
                                 >
                                     {item.icon && <span className="mr-3">{item.icon}</span>}

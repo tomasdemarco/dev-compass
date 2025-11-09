@@ -54,6 +54,9 @@
     --color-header-gp: #1f263d;
     --color-primary-gp: #cc27b0;
     --color-secondary-gp: #0de6b4;
+    --color-node-header: var(--node-header);
+    --color-node-component: var(--node-component);
+    --color-node-resource: var(--node-resource);
 }
 
 :root {
@@ -131,6 +134,11 @@
     --sidebar-accent-foreground: oklch(0.205 0 0);
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
+
+    /* Node Colors */
+    --node-header: oklch(0.92 0.02 257);
+    --node-component: oklch(1 0 0);
+    --node-resource: oklch(0.9 0.07 230);
 }
 
 .dark {
@@ -165,6 +173,11 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
+
+    /* Node Colors */
+    --node-header: oklch(0.34 0.03 257);
+    --node-component: oklch(0.24 0.03 257);
+    --node-resource: oklch(0.4 0.07 230);
 
     /* Shadow System Dark Mode Overrides */
     --shadow-sm: 0px 1px 2px rgba(0, 0, 0, 0.2);

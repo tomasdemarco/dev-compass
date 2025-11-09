@@ -1,3 +1,5 @@
+'use client';
+
 import { ComponentSpec } from '@/types/component';
 import { KeyRound, FolderGit2 } from 'lucide-react';
 import Table, { ColumnDef } from '@/components/generics/Table';
@@ -67,7 +69,7 @@ function ParameterStorePaths({ paths }: { paths: string[] | undefined }) {
   );
 }
 
-export default function EnvironmentTabContent({ spec }: { spec: ComponentSpec }) {
+export default function VariablesTabContent({ spec }: { spec: ComponentSpec }) {
   const hasContent = (spec.environmentVariables && Object.keys(spec.environmentVariables).length > 0) || (spec.parameterStorePaths && spec.parameterStorePaths.length > 0);
 
   if (!hasContent) {

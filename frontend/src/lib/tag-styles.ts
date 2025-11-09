@@ -57,7 +57,7 @@ export const TAG_STYLES: { [key: string]: string } = {
   lambda: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
   ec2: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
   batch: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-  s3: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300',
+  s3: 'bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100',
 
   // Data & Messaging
   database: 'bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-300',
@@ -67,6 +67,14 @@ export const TAG_STYLES: { [key: string]: string } = {
   rabbitmq: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
   rabbit: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
   mq: 'bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900 dark:text-fuchsia-300',
+
+  // Environments
+  development: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+  dev: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+  qa: 'bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-300',
+  uat: 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-300',
+  production: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+  prod: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
 };
 
 export const DEFAULT_TAG_STYLE = 'bg-gray-100 text-gray-800 dark:bg-gray-600 dark:text-gray-200';

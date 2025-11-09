@@ -14,5 +14,6 @@ func SetupRoutes(router *gin.Engine, catalogHandler *catalog.Handler, techdocsHa
 		api.GET("/entities", catalogHandler.GetAllEntities)
 		api.GET("/entities/:kind/:namespace/:name/docs/*path", techdocsHandler.GetDoc) // Corrected method name
 		api.GET("/environments", environmentHandler.GetEnvironments)
+		api.GET("/components/:componentName/environments", environmentHandler.GetEnvironmentsByComponent)
 	}
 }
